@@ -1,0 +1,17 @@
+{{ define "content" }}
+	<h1>Health Monitor</h1>
+	{{if .LoggedIn}}	
+		<div class="well">
+            <p>
+                Welcome to our service that helps you to track your everyday health metrics, your physical activity and save them forever!
+            </p>
+            <p>
+        		Click <a href="/healthmetrics">here</a> to see the metrics you've added or <a href="/addhealthmetricsform">add</a> new ones.
+            </p>
+        </div>
+	{{else}}
+        <div class="well">Track your health metrics and keep fit!</div>
+        <a class="btn btn-default" href="/loginform" role="button">Login</a>
+        <a class="btn btn-default" href="/signupform" role="button">Sign up</a>
+	{{end}}
+{{ end }}
