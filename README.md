@@ -18,6 +18,7 @@ Made by awesome guys from CTF.ae community.
 | Config   | Nickname |
 |----------|----------|
 | 723.conf | @andgein |
+| 750.conf | @midodany11 |
 
 2. `services/` — Services for training session. For now it contains services proposed by @andgein. Feel free to add new ones.
 
