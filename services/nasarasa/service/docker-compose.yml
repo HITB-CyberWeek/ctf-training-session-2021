@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    nasarasa_www:
+        build: ./www
+        image: nasarasa_www
+        ports:
+            - "8080:80"
+        restart: on-failure
+    nasarasa_db:
+        image: mysql
+        environment:
+            MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+            MYSQL_USER: nasarasa
+            MYSQL_PASSWORD: U2nvs8CXZZzG8ctE5XfF6r6zZBg84WTc
+            MYSQL_DATABASE: nasarasa
+        ports:
+            - "3306:3306"
+        restart: on-failure

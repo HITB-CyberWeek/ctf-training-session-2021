@@ -8,9 +8,9 @@
 
         function __construct()
         {
-            $DB_HOST = '127.0.0.1';
+            $DB_HOST = 'nasarasa_db';
             $DB_USER = 'nasarasa';
-            $DB_PASS = '2ueOVgi6CCRJh8hbA5PR';
+            $DB_PASS = 'U2nvs8CXZZzG8ctE5XfF6r6zZBg84WTc';
             $DB_NAME = 'nasarasa';
 
             $this->conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
