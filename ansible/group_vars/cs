@@ -41,5 +41,7 @@ teams: |
   {name => 'team2', network => '10.60.4.0/24', host => '10.60.4.2', token => 'YYY', country => 'Russia', logo => 'https://ructfe.org/ctf-static/dummy.png'},
 
 services: |
-  {name => 'service1', path => 'checkers/service1/checker.py', timeout => 30, tcp_port => 3001},
-  {name => 'service2', path => 'checkers/service2/checker.py', timeout => 30, tcp_port => 3002},
+  {name => 'coffeepot', path => 'services/coffeepot/checker/coffeepot_checker.py', timeout => 30, tcp_port => 3255},
+  {name => 'freelife', path => 'services/freelife/checker/check', timeout => 30, tcp_port => 8000},
+  {name => 'healthmonitor', path => 'services/healthmonitor/checker/hm.checker.sh', timeout => 30, tcp_port => 8080},
+  {name => 'nasarasa', path => 'services/nasarasa/checker/nasarasa.checker.py', timeout => 30, tcp_port => 80},
