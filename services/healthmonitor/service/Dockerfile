@@ -19,5 +19,5 @@ RUN go mod init github.com/HITB-CyberWeek/ctf-training-session-2021/healthmonito
     go build -v
 
 # Run the service
-EXPOSE 8000
+EXPOSE 8080
 CMD ./healthmonitor

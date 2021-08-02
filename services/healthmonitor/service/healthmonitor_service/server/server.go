@@ -192,7 +192,7 @@ func main() {
 
 	initService()
 	
-	var port = flag.String("port", "8000", "please specify the port to start server on")
+	var port = flag.String("port", "8080", "please specify the port to start server on")
 	flag.Parse()
 	logger.Println("Port to start on: " + *port)
 	server := http.Server{

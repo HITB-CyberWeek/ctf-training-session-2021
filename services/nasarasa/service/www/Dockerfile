@@ -21,4 +21,7 @@ RUN install-php-extensions mysqli xml tokenizer zip
 # Run composer install to install the dependencies
 RUN composer update && composer install --optimize-autoloader --no-interaction --no-progress
 
+COPY nasarasa.apache.conf /etc/apache2/conf-enabled/nasarasa.conf
+RUN a2enmod rewrite
+
 EXPOSE 80

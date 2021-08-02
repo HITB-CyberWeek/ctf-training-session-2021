@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  freelife:
+    build: .
+    hostname: freelife
+    container_name: freelife-service
+    restart: on-failure
+    ports:
+      - "8000:8000"
+
