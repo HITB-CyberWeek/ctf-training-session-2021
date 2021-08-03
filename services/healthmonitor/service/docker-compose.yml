@@ -5,7 +5,7 @@ services:
     build: .
     hostname: healthmonitor
     container_name: healthmonitor-service
-    restart: on-failure
+    restart: always
     ports:
       - "8080:8080"
 

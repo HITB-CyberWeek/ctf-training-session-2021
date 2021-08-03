@@ -5,7 +5,7 @@ services:
     build: .
     hostname: freelife
     container_name: freelife-service
-    restart: on-failure
+    restart: always
     ports:
       - "8000:8000"
 

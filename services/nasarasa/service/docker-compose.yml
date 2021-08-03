@@ -6,7 +6,7 @@ services:
         image: nasarasa_www
         ports:
             - "80:80"
-        restart: on-failure
+        restart: always
     nasarasa_db:
         image: mysql
         environment:
@@ -16,4 +16,4 @@ services:
             MYSQL_DATABASE: nasarasa
         ports:
             - "3306:3306"
-        restart: on-failure
+        restart: always
