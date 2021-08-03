@@ -23,3 +23,8 @@ Made by awesome guys from CTF.ae community.
 
 2. `services/` — Services for training session. For now it contains services proposed by @andgein. Feel free to add new ones.
 
+3. `vuln_image/` — Packer configuration for vulnerable image. Image is created as Digital Ocean snapshot.
+
+4. `checksystem/` — Hackerdom CTF checking system for Attack-Defence CTF. Added as a git submodule. Use `git submodule init` and `git submodule update` to checkout it.
+
+5. `ansible/` — Ansible configuration for checksystem.
