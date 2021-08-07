@@ -5,7 +5,7 @@ cs_scoreboard_dir: /home/cs/ctf-scoreboard-client
 pg_cs_user: cs
 pg_cs_pass: oowu4tieFais
 pg_cs_db: cs
-pg_cs_host: 10.110.0.5
+pg_cs_host: 10.10.10.9
 pg_cs_port: 5432
 pg_max_connections: 512
 pg_shared_buffers: 1536MB
@@ -19,7 +19,7 @@ cs_worker_checkers_queues: -q checker
 cs_worker_instance: 1
 
 cs_hypnotoad_listen: 127.0.0.1:8080
-cs_hypnotoad_flags_listen: 10.110.0.5:8080
+cs_hypnotoad_flags_listen: 10.10.10.9:8080
 cs_hypnotoad_workers: 4
 cs_hypnotoad_accepts: 1024
 cs_nginx_upstream_keepalive: 8
