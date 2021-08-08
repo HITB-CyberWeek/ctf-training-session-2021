@@ -14,8 +14,7 @@ from cloud_common import (get_cloud_ip, log_progress, call_unitl_zero_exit,
 
 
 TEAM = int(sys.argv[1])
-VM_NAME = "team%d" % TEAM
-
+ROUTER_VM_NAME = "team%d-router" % TEAM
 
 def log_stderr(*params):
     print("Team %d:" % TEAM, *params, file=sys.stderr)
@@ -34,10 +33,10 @@ def main():
     ip = None
 
     if team_state == "NOT_CLOUD":
-        ip = do_api.get_ip_by_vmname(VM_NAME)
-        if ip is None:
-            log_stderr("no ip, exiting")
-            return 1
+        #ip = do_api.get_ip_by_vmname(ROUTER_VM_NAME)
+        #if ip is None:
+            #log_stderr("no ip, exiting")
+            #return 1
 
         # cmd = ["sudo", "/root/cloud/switch_team_to_cloud.sh", str(TEAM), ip]
         # ret = call_unitl_zero_exit(cmd)
@@ -49,7 +48,7 @@ def main():
 
     if team_state == "MIDDLE_STATE":
         if ip is None:
-            ip = do_api.get_ip_by_vmname(VM_NAME)
+            ip = do_api.get_ip_by_vmname(ROUTER_VM_NAME)
             if ip is None:
                 log_stderr("no ip, exiting")
                 return 1

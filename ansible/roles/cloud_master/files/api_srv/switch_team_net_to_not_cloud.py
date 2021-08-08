@@ -14,8 +14,7 @@ from cloud_common import (log_progress, call_unitl_zero_exit,
                           )
 
 TEAM = int(sys.argv[1])
-VM_NAME = "team%d" % TEAM
-
+ROUTER_VM_NAME = "team%d-router" % TEAM
 
 def log_stderr(*params):
     print("Team %d:" % TEAM, *params, file=sys.stderr)
@@ -34,7 +33,7 @@ def main():
     ip = None
 
     if team_state == "CLOUD":
-        ip = do_api.get_ip_by_vmname(VM_NAME)
+        ip = do_api.get_ip_by_vmname(ROUTER_VM_NAME)
         if ip is None:
             log_stderr("no ip, exiting")
             return 1
