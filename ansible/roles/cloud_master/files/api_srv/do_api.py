@@ -216,6 +216,39 @@ def take_vm_snapshot(droplet_id, snapshot_name, attempts=5, timeout=20):
     return None
 
 
+def list_snapshots(attempts=4, timeout=5):
+    snapshots = {}
+    url = ("https://api.digitalocean.com/v2/snapshots?per_page=200")
+
+    cur_attempt = 1
+
+    while True:
+        try:
+            resp = requests.get(url, headers=HEADERS)
+            if not str(resp.status_code).startswith("2"):
+                log(resp.status_code, resp.headers, resp.text)
+                raise Exception("bad status code %d" % resp.status_code)
+
+            data = json.loads(resp.text)
+            for snapshot in data["snapshots"]:
+                snapshots[snapshot["id"]] = snapshot
+
+            if ("links" in data and "pages" in data["links"] and
+                                    "next" in data["links"]["pages"]):
+                url = data["links"]["pages"]["next"]
+            else:
+                break
+        except Exception as e:
+            log("list_snapshots trying again %s" % (e,))
+            cur_attempt += 1
+            if cur_attempt > attempts:
+                return None  # do not return parts of the output
+            time.sleep(timeout)
+
+    return list(snapshots.values())
+
+
+
 def reboot_vm_by_vmname(vm_name):
     ids = set()
 
