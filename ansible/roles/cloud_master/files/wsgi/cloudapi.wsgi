@@ -12,7 +12,7 @@ SCRIPTS_PATH="/cloud/backend"
 
 DEV_MODE = False
 
-DOMAIN = "cloud.ctf.hitb.org"
+DOMAIN = "training.ctf.hitb.org"
 
 RESP_HEADERS = [
     ("Content-Type", "application/json"), 
