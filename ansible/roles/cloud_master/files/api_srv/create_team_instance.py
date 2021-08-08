@@ -16,8 +16,8 @@ from cloud_common import ( # get_cloud_ip, take_cloud_ip,
                           SSH_YA_OPTS, DOMAIN)
 
 TEAM = int(sys.argv[1])
-ROUTER_VM_NAME = "team%d" % TEAM
-IMAGE_VM_NAME = "team%d-vulnimage" % TEAM
+ROUTER_VM_NAME = "team%d-router" % TEAM
+IMAGE_VM_NAME = "team%d" % TEAM
 
 # ROUTER_DO_IMAGE = 75325182
 ROUTER_DO_IMAGE = 89427587

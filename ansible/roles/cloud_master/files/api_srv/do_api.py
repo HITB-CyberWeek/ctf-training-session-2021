@@ -175,6 +175,48 @@ def get_ip_by_vmname(vm_name):
     return get_ip_by_id(list(ids)[0])
 
 
+def reboot_vm_by_id(droplet_id, attempts=5, timeout=20):
+    for i in range(attempts):
+        try:
+            url = "https://api.digitalocean.com/v2/droplets/%d/actions" % droplet_id
+            data = json.dumps({"type": "power_cycle"})
+
+            resp = requests.post(url, headers=HEADERS, data=data)
+
+            if resp.status_code not in [200, 201, 202]:
+                log(resp.status_code, resp.headers, resp.text)
+                raise Exception("bad status code %d" % resp.status_code)
+            # data = json.loads(resp.text)
+
+            return True
+        except Exception as e:
+            log("reboot_vm_by_id trying again %s" % (e,))
+        time.sleep(timeout)
+    log("failed to reboot vm by id")
+    return None
+
+
+def reboot_vm_by_vmname(vm_name):
+    ids = set()
+
+    droplets = get_all_vms()
+    if droplets is None:
+        return None
+
+    for droplet in droplets:
+        if droplet["name"] == vm_name:
+            ids.add(droplet['id'])
+
+    if len(ids) > 1:
+        log("warning: there are more than one droplet with name " + vm_name +
+            ", using random :)")
+
+    if not ids:
+        return None
+
+    return reboot_vm_by_id(list(ids)[0])
+
+
 def get_all_domain_records(domain, attempts=5, timeout=20):
     records = {}
     url = ("https://api.digitalocean.com/v2/domains/" + domain +

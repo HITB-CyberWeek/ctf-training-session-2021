@@ -19,7 +19,7 @@ from cloud_common import (# get_cloud_ip,
 
 
 TEAM = int(sys.argv[1])
-VM_NAME = "team%d" % TEAM
+VM_NAME = "team%d-router" % TEAM
 
 
 def log_stderr(*params):

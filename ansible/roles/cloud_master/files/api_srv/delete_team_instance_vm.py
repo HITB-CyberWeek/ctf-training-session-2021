@@ -17,7 +17,7 @@ from cloud_common import (log_progress, call_unitl_zero_exit, # get_cloud_ip, un
                           )
 
 TEAM = int(sys.argv[1])
-IMAGE_VM_NAME = "team%d-vulnimage" % TEAM
+IMAGE_VM_NAME = "team%d" % TEAM
 
 
 def log_stderr(*params):
