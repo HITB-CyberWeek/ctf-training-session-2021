@@ -28,7 +28,7 @@ RESP_HEADERS = [
 
 RATE_LIMITS = {
     "create_vm": 20,
-    "take_snapshot": 600,
+    "take_snapshot": 300,
     "connect_vm_to_game_network": 30,
     "disconnect_vm_from_game_network": 30,
     "list_snapshots": 10,
@@ -36,6 +36,8 @@ RATE_LIMITS = {
     "remove_snapshot": 30,
     "reboot_vm": 10
 }
+
+FAIL_RATE_LIMIT = 10
 
 
 def authenticate_request_by_token(token):
@@ -116,8 +118,11 @@ def get_rate_limit_remaining(team, task_name):
     if not result:
         return 0
     start_time, end_time, msg, progress, exit_code = result    
-    if not end_time or exit_code != 0:
+    if not end_time:
         return 0
+
+    if exit_code != 0:
+        rate_limit = FAIL_RATE_LIMIT
 
     print(time.time()-end_time, file=sys.stderr)
     return max(0, int(rate_limit - (time.time() - end_time)))

@@ -44,7 +44,7 @@ def main():
 
         if not good_snapshots:
             print("msg:", "no snapshots are created yet")
-            return 1
+            return 0
 
         good_snapshots.sort(key=lambda v: v.get("created_at", 0))
 
