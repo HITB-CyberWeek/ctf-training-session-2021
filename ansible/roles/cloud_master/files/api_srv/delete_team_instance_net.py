@@ -20,7 +20,7 @@ from cloud_common import (# get_cloud_ip,
 
 TEAM = int(sys.argv[1])
 VM_NAME = "team%d-router" % TEAM
-
+DNS_NAME = "team%d" % TEAM
 
 def log_stderr(*params):
     print("Team %d:" % TEAM, *params, file=sys.stderr)
@@ -57,7 +57,7 @@ def main():
 
     if net_state == "DNS_REGISTERED":
         domain_ids = do_api.get_domain_ids_by_hostname(
-            VM_NAME, DOMAIN, print_warning_on_fail=True)
+            DNS_NAME, DOMAIN, print_warning_on_fail=True)
         if domain_ids is None:
             log_stderr("failed to get domain ids, exiting")
             return 1

@@ -18,6 +18,8 @@ from cloud_common import ( # get_cloud_ip, take_cloud_ip,
 TEAM = int(sys.argv[1])
 ROUTER_VM_NAME = "team%d-router" % TEAM
 IMAGE_VM_NAME = "team%d" % TEAM
+DNS_NAME = IMAGE_VM_NAME
+
 
 # ROUTER_DO_IMAGE = 75325182
 ROUTER_DO_IMAGE = 89427587
@@ -109,7 +111,7 @@ def main():
 
         log_progress("15%")
 
-        domain_ids = do_api.get_domain_ids_by_hostname(ROUTER_VM_NAME, DOMAIN)
+        domain_ids = do_api.get_domain_ids_by_hostname(DNS_NAME, DOMAIN)
         if domain_ids is None:
             log_stderr("failed to check if dns exists, exiting")
             return 1
@@ -120,7 +122,7 @@ def main():
 
         log_progress("17%")
 
-        if do_api.create_domain_record(ROUTER_VM_NAME, ip, DOMAIN):
+        if do_api.create_domain_record(DNS_NAME, ip, DOMAIN):
             net_state = "DNS_REGISTERED"
             open("db/team%d/net_deploy_state" % TEAM, "w").write(net_state)
         else:
