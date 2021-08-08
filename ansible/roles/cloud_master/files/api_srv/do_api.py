@@ -249,6 +249,8 @@ def list_snapshots(attempts=4, timeout=5):
 
 
 
+
+
 def reboot_vm_by_vmname(vm_name):
     ids = set()
 
@@ -423,5 +425,22 @@ def delete_domain_record(domain_id, domain, attempts=10, timeout=20):
             return True
         except Exception as e:
             log("delete_domain_record trying again %s" % (e,))
+        time.sleep(timeout)
+    return False
+
+
+def delete_snapshot(snapshot_id, attempts=10, timeout=20):
+    for i in range(attempts):
+        try:
+            log("deleting snapshot %s" % snapshot_id)
+            url = ("https://api.digitalocean.com/v2/snapshots" +
+                   "/%d" % snapshot_id)
+            resp = requests.delete(url, headers=HEADERS)
+            if not str(resp.status_code).startswith("2"):
+                log(resp.status_code, resp.headers, resp.text)
+                raise Exception("bad status code %d" % resp.status_code)
+            return True
+        except Exception as e:
+            log("delete_snapshot trying again %s" % (e,))
         time.sleep(timeout)
     return False
