@@ -10,7 +10,7 @@ import fcntl
 DB_PATH="/cloud/backend/db"
 SCRIPTS_PATH="/cloud/backend"
 
-DEV_MODE = True
+DEV_MODE = False
 
 DOMAIN = "cloud.training.ctf.hitb.org"
 
@@ -210,7 +210,7 @@ def cmd_get_team_openvpn_config(team, args):
         config = open("%s/team%d/client_entergame.ovpn" % (DB_PATH, team)).read().strip()
     else:
         url = ("https://github.com/HITB-CyberWeek/ctf-training-session-2021/blob/main/ansible/"
-               "roles/cloud_master/files/api_srv/db_init_state_dev/team%d/client_entergame.ovpn" % team)
+               "roles/cloud_master/files/api_srv/db_init_state_prod/team%d/client_entergame.ovpn" % team)
         config = "DEV_MODE=ON\nTake the config here:\n%s" % url
     return "200 Ok", {"result": "ok", "msg": config}
 
