@@ -196,6 +196,27 @@ def reboot_vm_by_id(droplet_id, attempts=5, timeout=20):
     return None
 
 
+def restore_vm_from_snapshot_by_id(droplet_id, snapshot_id, attempts=5, timeout=20):
+    for i in range(attempts):
+        try:
+            url = "https://api.digitalocean.com/v2/droplets/%d/actions" % droplet_id
+            data = json.dumps({"type": "restore", "image": snapshot_id})
+
+            resp = requests.post(url, headers=HEADERS, data=data)
+
+            if resp.status_code not in [200, 201, 202]:
+                log(resp.status_code, resp.headers, resp.text)
+                raise Exception("bad status code %d" % resp.status_code)
+            # data = json.loads(resp.text)
+
+            return True
+        except Exception as e:
+            log("reboot_vm_by_id trying again %s" % (e,))
+        time.sleep(timeout)
+    log("failed to reboot vm by id")
+    return None
+
+
 def take_vm_snapshot(droplet_id, snapshot_name, attempts=5, timeout=20):
     for i in range(attempts):
         try:
@@ -246,9 +267,6 @@ def list_snapshots(attempts=4, timeout=5):
             time.sleep(timeout)
 
     return list(snapshots.values())
-
-
-
 
 
 def reboot_vm_by_vmname(vm_name):

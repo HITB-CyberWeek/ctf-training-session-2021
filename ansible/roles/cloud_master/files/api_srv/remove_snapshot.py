@@ -23,7 +23,7 @@ def log_stderr(*params):
 
 
 def main():
-    if not re.fullmatch(r"[0-9a-zA-Z_]{,63}", NAME):
+    if not re.fullmatch(r"[0-9a-zA-Z_]{,64}", NAME):
         print("msg: ERR, name validation error")
         return 1
 
