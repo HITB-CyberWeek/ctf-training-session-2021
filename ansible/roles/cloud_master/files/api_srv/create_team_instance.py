@@ -181,6 +181,15 @@ def main():
            log_stderr("unable to nat port 22")
            return 1
 
+        log_progress("61%")
+
+        cmd = ["iptables -t nat -A POSTROUTING -o eth1 -p tcp " +
+               "-m tcp --dport 22 -j MASQUERADE"]
+        ret = call_unitl_zero_exit(["ssh"] + SSH_DO_OPTS + [ip] + cmd)
+        if not ret:
+           log_stderr("unable to masquerade port 22")
+           return 1
+
         log_progress("62%")
 
         net_state = "READY"
