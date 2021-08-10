@@ -1,0 +1,34 @@
+- hosts: checkers, master
+  tasks:
+  - name: sync catalog
+    synchronize:
+      src: "../services"
+      dest: "{{ cs_dir }}"
+    tags: sync
+
+  - name: checkers owner
+    file:
+      path: "{{ cs_dir }}/services"
+      owner: "{{ cs_user }}"
+      group: "{{ cs_user }}"
+      recurse: yes
+    tags: sync
+
+  - name: install sys deps
+    apt:
+      name:
+        - g++
+        - make
+        - libssl-dev
+      install_recommends: no
+
+#   - name: python deps
+#     pip:
+#       executable: pip3
+#       requirements: "{{ cs_dir }}/services/{{ item }}/checker/requirements.txt"
+#     ignore_errors: yes
+#     loop:
+#       - nasarasa
+#       - healthmonitor
+#       - freelife
+#       - coffeepot

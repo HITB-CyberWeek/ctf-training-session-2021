@@ -55,7 +55,7 @@ class CheckerException(Exception):
 
 class Client(object):
     def __init__(self, addr, user):
-        self.addr = addr
+        self.addr = addr + ":8080"
         self.user = user
         self.cookie_jar = CookieJar()
 
