@@ -70,7 +70,7 @@
                 $statement .= join(', ', $assigns);
             }
 
-            return $statement;        
+            return $statement;
         }
 
         public function create_table($table_name, $schema)
@@ -79,7 +79,7 @@
 
             $columns = [];
             foreach ($schema as $field_name => $field)
-                $columns[] = $this->escape_field_name($field_name) . ' ' . $field->get_type_definition();
+                $columns[] = $this->escape_field_name($field_name) . ' ' . $field->get_type_definition() . ' COLLATE utf8mb4_unicode_ci';
 
             $statement .= join(', ', $columns);
             $statement .= ')';
