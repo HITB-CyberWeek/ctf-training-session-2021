@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  freelife:
+  healthmonitor:
     build: .
     hostname: healthmonitor
     container_name: healthmonitor-service
