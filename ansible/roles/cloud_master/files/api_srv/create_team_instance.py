@@ -43,7 +43,7 @@ echo 'network:
             routes:
                 - to: 10.60.0.0/14
                   via: {1}
-                - to: 10.60.0.0/14
+                - to: 10.80.0.0/14
                   via: {1}
                 - to: 10.10.10.0/24
                   via: {1}
@@ -240,7 +240,7 @@ def main():
 
                 vulnimage_droplet_id = do_api.create_vm(
                     IMAGE_VM_NAME, image=VULNIMAGE_DO_IMAGE, ssh_keys=DO_SSH_KEYS,
-                    user_data=userdata, vpc_uuid=vpc_id, tag="team-image", size="s-2vcpu-4gb")
+                    user_data=userdata, vpc_uuid=vpc_id, tag="team-image", size="s-4vcpu-8gb")
                 if vulnimage_droplet_id is None:
                     log_stderr("failed to create vm, exiting")
                     return 1
