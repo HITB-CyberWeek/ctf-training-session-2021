@@ -7,7 +7,7 @@ import (
 	"sync"
 )
 const (
-	DbName = "./health.db" 
+	DbName = "./db/health.db" 
 	CreateIndicesTable = "CREATE TABLE IF NOT EXISTS healthIndices(id integer not null primary key AUTOINCREMENT, userId integer, weight integer, bp integer, pulse integer, walking_distance integer, comment text)"
 	InsertValues = "INSERT INTO healthIndices(userId, weight, bp, pulse, walking_distance, comment) VALUES (?, ?, ?, ?, ?, ?)"
 	SelectRows = "SELECT id, weight, bp, pulse, walking_distance, comment FROM healthIndices WHERE userId = ?"
