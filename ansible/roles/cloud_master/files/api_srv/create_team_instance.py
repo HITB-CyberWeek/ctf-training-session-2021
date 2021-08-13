@@ -248,7 +248,7 @@ def main():
                 for i in range(70, 100):
                     # just spinning for the sake of smooth progress
                     log_progress("%d%%" % i)
-                    time.sleep(1)
+                    time.sleep(3)
 
             image_state = "RUNNING"
             open("db/team%d/image_deploy_state" % TEAM, "w").write(image_state)
