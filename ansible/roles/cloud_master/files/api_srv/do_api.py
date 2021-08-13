@@ -81,7 +81,7 @@ def check_vm_exists(vm_name):
 
 
 def create_vm(vm_name, image, ssh_keys, vpc_uuid=None,
-              region="ams3", size="s-1vcpu-1gb", tag="vm",
+              region="sgp1", size="s-1vcpu-1gb", tag="vm",
               user_data="#!/bin/bash\n\n",
               attempts=10, timeout=20):
     for i in range(attempts):
@@ -388,7 +388,7 @@ def get_vpc_by_name(name, print_warning_on_fail=False):
     return None
 
 
-def create_vpc(name, ip_range, region="ams3", attempts=10, timeout=20):
+def create_vpc(name, ip_range, region="sgp1", attempts=10, timeout=20):
     for i in range(attempts):
         try:
             data = json.dumps({
