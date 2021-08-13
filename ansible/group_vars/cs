@@ -29,9 +29,9 @@ cs_nginx_listen: 0.0.0.0:80
 cs_static_path: /home/cs/ctf-scoreboard-client/scoreboard/build
 
 cs_base_url: https://monitor.training.ctf.hitb.org
-cs_admin_auth: root:Weez3ierie
+cs_admin_auth: root:caiboh7ohz9E
 cs_ctf_name: HITBSECCONF2021 Edu CTF
-cs_flags_secret: xaiFahgep7fe
+cs_flags_secret: Ahphu9uzeiru
 cs_round_length: 60
 cs_flag_life_time: 15
 cs_disable_irrelevant_services: 0
