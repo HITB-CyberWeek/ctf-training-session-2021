@@ -88,6 +88,7 @@ teams: |
   {name => 'obelus', network => '10.60.48.0/24', host => '10.60.48.3', token => '48_3a4bab9d859db6146aa8333b4613389a', country => 'Singapore', logo => 'https://monitor.training.ctf.hitb.org/data/logos/48.gif'},
   {name => '0ni0n', network => '10.60.49.0/24', host => '10.60.49.3', token => '49_3ff14c939298df44d8b2dae69814413f', country => 'Vietnam', logo => 'https://monitor.training.ctf.hitb.org/data/logos/49.png'},
   {name => 'csoc', network => '10.60.50.0/24', host => '10.60.50.3', token => '50_6c6b4a0460e044d3631909b2a5e6daa0', country => 'Vietnam', logo => 'https://ructfe.org/ctf-static/dummy.png'},
+  {name => 'Unreal Security ', network => '10.60.51.0/24', host => '10.60.51.3', token => '51_1ebc4f21cf855be384ccf3ccbc83ccdc', country => 'United Arab Emirates', logo => 'https://ructfe.org/ctf-static/dummy.png'},
   {name => 'Orgs 1', network => '10.60.100.0/24', host => '10.60.100.3', token => '100_f2595a8c96141313b4578508c6db4914', country => 'United Arab Emirates', logo => 'https://ructfe.org/ctf-static/dummy.png'},
   {name => 'Orgs 2', network => '10.60.101.0/24', host => '10.60.101.3', token => '101_87636f81cfde556c51f1d77674e22c5c', country => 'United Arab Emirates', logo => 'https://ructfe.org/ctf-static/dummy.png'},
   {name => 'Orgs 3', network => '10.60.102.0/24', host => '10.60.102.3', token => '102_b86f898efad467b96a65052120515d9a', country => 'United Arab Emirates', logo => 'https://ructfe.org/ctf-static/dummy.png'},
