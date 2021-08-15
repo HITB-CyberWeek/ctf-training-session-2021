@@ -35,7 +35,7 @@ cs_flags_secret: Ahphu9uzeiru
 cs_round_length: 60
 cs_flag_life_time: 15
 cs_disable_irrelevant_services: 0
-cs_time: "['2021-08-14 12:00:00', '2021-08-16 12:00:00']"
+cs_time: "['2021-08-14 12:00:00', '2021-08-18 12:00:00']"
 
 teams: |
   {name => 'Arcane', network => '10.60.1.0/24', host => '10.60.1.3', token => '1_c7d900d8acb505de70d5fa2fb86c2ac2', country => 'India', logo => 'https://monitor.training.ctf.hitb.org/data/logos/1.jpg'},
