@@ -1,0 +1,672 @@
+body {
+	background: #1C3C51;
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+	color: white;
+}
+
+/*body::-webkit-scrollbar {
+	display: none;
+}*/
+
+#root {
+	z-index: 1;
+	position: relative;
+}
+
+#header-container {
+	height: 90px;
+	background: #274A61;
+	box-shadow: inset 0 -1px 0 0 rgba(255,255,255,0.1), 0 2px 10px 0 rgba(0,0,0,0.5);
+	position: fixed;
+	z-index: 100;
+}
+
+#progress {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+#progress #scale {
+	background: white;
+	height: 5px;
+	float: left;
+}
+
+#progress #hatch {
+	height: 10px;
+	width: 2px;
+	background-color: white;
+	position: absolute;
+	z-index: 1005;
+}
+
+#progress #endhatch {
+	height: 10px;
+	width: 2px;
+	background-color: #93A4B0;
+	position: absolute;
+	z-index: 1000;
+}
+
+#progress #current {
+	font-weight: 500;
+	top: 10px;
+	font-size: 14px;
+	color: white;
+	z-index: 1010;
+	float: left;
+	margin-left: 6px;
+	margin-top: 0px;
+}
+
+#progress #left {
+	position: absolute;
+	right: 3px;
+	font-weight: 500;
+	top: 0;
+	font-size: 14px;
+	color: #93A4B0;
+	z-index: 1010;
+}
+
+#progress #left.timedown {
+	right: -2px;
+	top: 10px;
+}
+
+#header-container #header {
+	margin: 0 auto;
+}
+
+#header .attacks {
+	font-size: 14px;
+	float: left;
+}
+
+#header .min {
+	margin-left: 4px;
+	color: black;
+	font-size: 14px;
+	float: left;
+	font-weight: 900;
+}
+
+.service-header {
+	width: 160px;
+	float: left;
+	padding-top: 16px;
+}
+
+#attacks-header {
+	width: 480px;
+	float: left;
+	height: 100%;
+	padding-top: 12px;
+	padding-left: 155px;
+	box-sizing: border-box;
+}
+
+.service-name {
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 900;
+	line-height: 16px;
+}
+
+#scoreboard {
+	padding-top: 120px;
+	padding-bottom: 30px;
+}
+
+.team {
+	height: 100px;
+	overflow: hidden;
+	transition: height 0.2s ease-in;
+}
+
+.team_selected {
+	background-color: #274A61;
+	box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), inset 0 -1px 0 0 rgba(255,255,255,0.2);
+	height: 565px;
+}
+
+.team_selected .team_service .fp {
+	font-size: 20px;
+}
+
+.team:hover {
+	background-color: #274A61;
+	box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), inset 0 -1px 0 0 rgba(255,255,255,0.2);
+}
+
+.team_selected + .team:hover {
+	box-shadow: inset 0 -1px 0 0 rgba(255,255,255,0.2);
+}
+
+.team:hover + .team_selected {
+	box-shadow: inset 0 -1px 0 0 rgba(255,255,255,0.2);
+ }
+
+.team_centered {
+	margin: 0 auto;
+}
+
+.team_summary {
+	height: 100px;
+	clear: both;
+}
+
+.team_plots {
+	position: relative;
+	margin-top: 60px;
+	padding-bottom: 25px;
+	padding-top: 25px;
+}
+
+.fbarchart {
+	margin-top: 45px;
+}
+
+.team .place {
+	width: 60px;
+	float: left;
+	font-weight: 500;
+	color: white;
+	padding-top: 20px;
+	padding-left: 9px;
+	padding-right: 4px;
+	white-space: normal;
+	box-sizing: border-box;
+}
+
+.team .place .suffix {
+	font-size: 11px;
+	vertical-align: 2px;
+}
+
+.team_border {
+	border-top: solid 1px rgba(255,255,255,0.15);
+}
+
+.team:hover .team_border, .team:hover + .team .team_border {
+	margin-top:1px;
+	border-top: none;
+}
+
+.team_selected .team_border, .team_selected + .team .team_border {
+	margin-top:1px;
+	border-top: none;
+}
+
+.team_logo {
+	width: 64px;
+	height: 100%;
+	float: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.team_logo img {
+	width: 64px;
+}
+
+.team_info {
+	width: 356px;
+	height: 100%;
+	float: left;
+	padding-top: 13px;
+	padding-left: 30px;
+	padding-right: 10px;
+	box-sizing: border-box;
+}
+
+.team_service {
+	width: 160px;
+	height: 100%;
+	float: left;
+	padding-top: 12px;
+	box-sizing: border-box;
+}
+
+.team_name {
+	font-weight: 900;
+	color: black;
+	font-size: 24px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	transition: color 0.2s ease;
+}
+
+.team_selected .team_name {
+	color: white;
+}
+
+.ip {
+	color: white;
+	opacity: 0.2;
+	font-size: 11px;
+	margin-top: -2px;
+}
+
+.score {
+	font-size: 19px;
+	line-height: 19px;
+	color: white;
+	margin-top: 3px;
+	transition: opacity 0.2s ease;
+}
+
+.team_selected .team_info .score {
+	opacity: 0;
+}
+
+.team_score_line {
+	margin-top: 3px;
+	width: 100px;
+	height: 3px;
+	min-height: 3px;
+	transition: opacity 0.2s ease;
+}
+
+.team_selected .team_info .team_score_line {
+	opacity: 0;
+}
+
+.team_score_line div {
+	height: 3px;
+	min-height: 3px;
+}
+
+.team_service .fp {
+	font-size: 16px;
+	color: white;
+	transition: font-size 0.2s ease;
+}
+
+.team_service .flags {
+	opacity: 0.5;
+	font-size: 12px;
+	transition: font-size 0.2s ease, opacity 0.2s ease, margin-top 0.2s;
+	margin-top: 12px;
+}
+
+.team_service .flags .sflags {
+	transition: color 0.2s;
+}
+
+.team_selected .flags .sflags {
+	color: #FF5656;
+}
+
+.team_service .flags .flags-icon {
+	color: white;
+	fill: white;
+}
+
+.team_selected .team_service .flags {
+	margin-top: 20px;
+	font-size: 14px;
+	opacity: 1;
+}
+
+.team_service .sla {
+	margin-top: 7px;
+	box-sizing: border-box;
+	position: relative;
+	transition: margin-top 0.2s;
+}
+
+.team_selected .team_service .sla {
+	margin-top: 16px;
+}
+
+.slaline {
+	position: absolute;
+	left: 45px;
+	top: 3px;
+	transform-origin: top left;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	transition: left 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.team_selected .slaline {
+	left: 0;
+	transform: scale(1.75);
+	border-bottom: 1px solid black;
+}
+
+.slapercent {
+	position: absolute;
+	font-size: 14px;
+	width: 40px;
+	top: 0;
+	transition: top 0.2s;
+}
+
+.team_selected .slapercent {
+	top: 30px;
+}
+
+.service_fp_line {
+	margin-top: 1px;
+	width: 100px;
+	height: 3px;
+	min-height: 3px;
+	transition: height 0.2s ease, min-height 0.2s ease;
+}
+
+.team_selected .service_fp_line div {
+	height: 4px;
+	min-height: 4px;
+}
+
+.service_fp_line div {
+	height: 3px;
+	min-height: 3px;
+	transition: height 0.2s ease, min-height 0.2s ease;
+}
+
+.team_selected .service_fp_line div {
+	height: 4px;
+	min-height: 4px;
+}
+
+#scoreboard .red {
+	color: #FF5656;
+}
+
+#scoreboard .green {
+	color: #84E668;
+}
+
+#scoreboard .background-red {
+	 background: #FF5656;
+ }
+
+#scoreboard .background-green {
+	background: #84E668;
+}
+
+#scoreboard .rect-red.colored {
+	fill: #FF5656;
+}
+
+#scoreboard .rect-green.colored {
+	fill: #84E668;
+}
+
+#scoreboard .rect-red {
+	fill: #1C3C51;
+}
+
+#scoreboard .rect-green {
+	fill: #496373;
+}
+
+.flags_line {
+	margin-top: 1px;
+	width: 100px;
+	height: 2px;
+	min-height: 2px;
+	transition: height 0.2s ease;
+}
+
+.flags_line div {
+	height: 2px;
+	min-height: 2px;
+	float: left;
+}
+
+.team_selected .flags_line {
+	height: 3px;
+	min-height: 3px;
+}
+
+.team_selected .flags_line div {
+	height: 3px;
+	min-height: 3px;
+}
+
+.slalineblock {
+	line-height: 10px;
+}
+
+.hidden {
+	display: none;
+}
+
+.status {
+	position: absolute;
+	top: 13px;
+	font-size: 9px;
+	transition: top 0.2s, font-size 0.2s;
+}
+
+.team_selected .status {
+	top: 46px;
+	font-size: 11px;
+}
+
+.maxSla {
+	position: absolute;
+	top: 13px;
+	left: 55px;
+	opacity: 0;
+	color: black;
+	font-size: 14px;
+	transition: top 0.2s, opacity 0.2s;
+}
+
+.team_selected .maxSla {
+	top: 30px;
+	opacity: 1;
+}
+
+.plotborder {
+	fill: rgb(255,255,255);
+	fill-opacity: 0.15;
+}
+
+.plottext {
+	text-anchor: start;
+	fill-opacity: 0.5;
+	fill: rgb(255,255,255);
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+}
+
+.plotsprogress {
+	position: absolute;
+	top: 0;
+}
+
+.plotsprogress .counter {
+	position: absolute;
+	font-size: 12px;
+	margin-left: -15px;
+	width: 30px;
+	text-align: center;
+	margin-top: 3px;
+}
+
+.plotsprogress .hatch {
+	height: 360px;
+	width: 2px;
+	background-color: white;
+	margin-top: 20px;
+}
+
+.team_plots .counts {
+	position: absolute;
+	left: 0;
+	top: 0;
+	font-size: 22px;
+}
+
+.team_plots .counts_title {
+	color: black;
+	font-weight: 900;
+	font-size: 20px;
+}
+
+.team_plots .flags_line div {
+	height: 3px;
+	min-height: 3px;
+}
+
+.team_plots .sla_block {
+	position: absolute;
+	top: -55px;
+}
+
+.team_plots .score_block {
+	position: absolute;
+	top: 95px;
+	width: 300px;
+}
+
+.team_plots .flags_block {
+	position: absolute;
+	top: 262px;
+}
+
+.team_plots .flags_block .flags {
+	width: 200px;
+}
+
+.team_plots .flags .sflags {
+	color: #FF5656;
+}
+
+#compact-container {
+	position: absolute;
+	left: 30px;
+	top: 48%;
+	z-index: 1000;
+	transform: translate(0,-50%);
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+}
+#compact-container table {
+	border-spacing: 0;
+}
+#compact-container img {
+	width: auto;
+	margin-right: 9px;
+	margin-top: 3px;
+}
+#compact-container tr:nth-child(1) .place {
+	background-color: #FFBF1B;
+	color: #220347;
+}
+#compact-container tr:nth-child(1) td:nth-last-child(-n+2) {
+	font-weight: 700;
+}
+#compact-container tr:nth-child(2) .place {
+	background-color: #E4E4E4;
+	color: #220347;
+}
+#compact-container tr:nth-child(2) td:nth-last-child(-n+2) {
+	font-weight: 700;
+}
+#compact-container tr:nth-child(3) .place {
+	background-color: #EC8F47;
+	color: #220347;
+}
+#compact-container tr:nth-child(3) td:nth-last-child(-n+2) {
+	font-weight: 700;
+}
+#compact-container td:nth-child(3) div {
+	margin-left: 1px;
+	margin-right: 20px;
+}
+#compact-container td:nth-child(4) div {
+	margin-right: 1px;
+	text-align: right;
+}
+#compact-container tr:not(*:last-child) td:nth-last-child(-n+2) {
+	border-bottom: 1px solid #3E596B;
+}
+#compact-container .place {
+	color: rgba(255,255,255,0.6);
+	border-radius: 100px;
+	text-align: center;
+	margin-right: 13px;
+}
+#compact-container-wrapper {
+	position: fixed;
+	background-color: #1C3C51;
+}
+.compactTeamName {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#container {
+	position: relative;
+	transform-origin: left top;
+}
+#bigleft {
+	position: fixed;
+	left: 40px;
+	bottom: 20px;
+	font-size: 36px;
+}
+
+.attacksplot {
+	width: 125px;
+	height: 34px;
+	margin-bottom: 3px;
+}
+
+.attacksplot svg {
+	margin-left: -2px;
+}
+
+.attacksplot path {
+	stroke: #637C8D;
+	stroke-width: 1px;
+	fill: none;
+}
+
+.attacksplot circle {
+	stroke-width: 0;
+}
+
+.svgDelimeter {
+	fill: #000000;
+}
+
+.c1 {
+	fill: #BFD686;
+}
+
+.c2 {
+	fill: #86D9E0;
+}
+
+.c3 {
+	fill: #7AA6F3;
+}
+
+.c4 {
+	fill: #E9CC76;
+}
+
+.c5 {
+	fill: #AE86F2;
+}
+
+.c6 {
+	fill: #EB8BD7;
+}
+
+.c7 {
+	fill: #F7AB7C;
+}

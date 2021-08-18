@@ -28,3 +28,5 @@ Made by awesome guys from CTF.ae community.
 4. `checksystem/` — Hackerdom CTF checking system for Attack-Defence CTF. Added as a git submodule. Use `git submodule init` and `git submodule update` to checkout it.
 
 5. `ansible/` — Ansible configuration for checksystem.
+
+6. `results/` — Results of Training Session
